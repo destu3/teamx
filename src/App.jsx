@@ -1,46 +1,113 @@
-import { useState } from 'react';
-import { Stage, Sprite, Text, useTick } from '@pixi/react'; // root  container for all entities
-import demoSprite from './resources/demo-sprite.png';
-
-let i = 0;
-const DemoSprite = () => {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-
-  useTick(delta => {
-    i += 0.05 * delta;
-    setX(Math.sin(i) * 100);
-    setY(Math.sin(i / 1.5) * 100);
-  });
-
-  return <Sprite x={x} y={y} scale={1.3} image={demoSprite} />;
-};
+import { useEffect, useState } from 'react';
+import Planet from './components/Planet.jsx';
+import ArrowKeys from './components/ArrowKeys.jsx';
+import ExitButton from './components/ExitButton.jsx';
+import styled from 'styled-components';
+import planet1 from './resources/saturn.png';
+import sky from './resources/sky.jpg';
+import ship from './resources/rocket.png';
+import Rocket from './components/Rocket';
+import WellDoneMessage from './components/WellDoneMessage.jsx';
 
 const App = () => {
-  const textStyle = {
-    align: 'center',
-    fontWeight: 'bold',
-    fill: ['#202A44'],
-    stroke: '#eef1f5',
-    strokeThickness: 1,
-    letterSpacing: 5,
-    wordWrap: false,
-    wordWrapWidth: 350,
+  const [objectX, setObjectX] = useState(0);
+  const [objectY, setObjectY] = useState(0);
+  const [planetX, setPlanetX] = useState(0);
+  const [planetY, setPlanetY] = useState(0);
+  const [level, setLevel] = useState(0);
+  const [doingLevel, setDoingLevel] = useState(true);
+  const [showMessage, setShowMessage] = useState(false);
+  const [rotateAngle, setRotateAngle] = useState(90);
+
+  // will close well done message to start next level
+  useEffect(() => {
+    setTimeout(() => {
+      setShowMessage(false);
+      setLevel((level) => level + 1);
+    }, 5000);
+  }, [showMessage]);
+
+  const generateShipStartPosition = () => {
+    setObjectX(Math.floor(Math.random() * (400 - 50 + 1)) + 50);
+    setObjectY(Math.floor(Math.random() * (300 - 50)) + 50);
+  };
+
+  const generatePlanetStartPosition = () => {
+    setPlanetX(Math.floor(Math.random() * (800 - 600)) + 600);
+    setPlanetY(Math.floor(Math.random() * (700 - 50)) + 50);
+  };
+
+  useEffect(() => {
+    generateShipStartPosition();
+    generatePlanetStartPosition();
+  }, []);
+
+  const checkCollision = () => {
+    const image1 = image1Ref.current.getBoundingClientRect();
+    const image2 = image2Ref.current.getBoundingClientRect();
+
+    if (
+      image1.x < image2.x + image2.width &&
+      image1.x + image1.width > image2.x &&
+      image1.y < image2.y + image2.height &&
+      image1.y + image1.height > image2.y
+    ) {
+      console.log('Collision detected!');
+    } else {
+      console.log('No collision.');
+    }
+  };
+
+  // handlers to move object across the screen activated on button press
+  const handleMoveUp = () => {
+    // move planet up the frame by 10px
+    setObjectY((prevY) => prevY - 40);
+    setRotateAngle(0);
+    checkCollision();
+  };
+  const handleMoveLeft = () => {
+    // move planet up the frame by 10px
+    setObjectX((prevX) => prevX - 40);
+    setRotateAngle(270);
+    checkCollision();
+  };
+  const handleMoveDown = () => {
+    // move planet up the frame by 10px
+    setObjectY((prevY) => prevY + 40);
+    setRotateAngle(180);
+    checkCollision();
+  };
+  const handleMoveRight = () => {
+    // move planet up the frame by 10px
+    setObjectX((prevX) => prevX + 40);
+    setRotateAngle(90);
+    checkCollision();
   };
 
   return (
-    <Stage
-      width={600}
-      height={600}
-      options={{
-        backgroundColor: 0x2980b9,
-        antialias: true,
-      }}
-    >
-      <Text text="Demo sprite" style={textStyle} />
-      <DemoSprite />
-    </Stage>
+    <Wrapper style={{ backgroundImage: `url(${sky})` }}>
+      <ExitButton />
+      {showMessage && <WellDoneMessage />}
+      <Rocket x={objectX} y={objectY} imageSrc={ship} angle={rotateAngle} />
+      <Planet x={planetX} y={planetY} imageSrc={planet1} />
+      <ArrowKeys
+        moveUp={handleMoveUp}
+        moveLeft={handleMoveLeft}
+        moveDown={handleMoveDown}
+        moveRight={handleMoveRight}
+      />
+    </Wrapper>
   );
 };
 
 export default App;
+
+const Wrapper = styled.div`
+  background-size: cover;
+  position: relative;
+  /* background-color: #000; */
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  overflow: hidden;
+`;
