@@ -27,6 +27,15 @@ const App = () => {
     }, 5000);
   }, [showMessage]);
 
+  const resetGame = () => {
+    generateShipStartPosition();
+    generatePlanetStartPosition();
+  };
+
+  useEffect(() => {
+    if (!showMessage) resetGame();
+  }, [showMessage]);
+
   const generateShipStartPosition = () => {
     setObjectX(Math.floor(Math.random() * (400 - 50 + 1)) + 50);
     setObjectY(Math.floor(Math.random() * (300 - 50)) + 50);
@@ -36,11 +45,6 @@ const App = () => {
     setPlanetX(Math.floor(Math.random() * (800 - 600)) + 600);
     setPlanetY(Math.floor(Math.random() * (700 - 50)) + 50);
   };
-
-  useEffect(() => {
-    generateShipStartPosition();
-    generatePlanetStartPosition();
-  }, []);
 
   const checkCollision = () => {
     const image1 = document.getElementById('image1').getBoundingClientRect();
