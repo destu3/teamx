@@ -14,16 +14,16 @@ const App = () => {
   const [objectY, setObjectY] = useState(0);
   const [planetX, setPlanetX] = useState(0);
   const [planetY, setPlanetY] = useState(0);
-  const [level, setLevel] = useState(0);
   const [doingLevel, setDoingLevel] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const [rotateAngle, setRotateAngle] = useState(90);
 
   // will close well done message to start next level
   useEffect(() => {
+    if (showMessage) {
+    }
     setTimeout(() => {
       setShowMessage(false);
-      setLevel((level) => level + 1);
     }, 5000);
   }, [showMessage]);
 
@@ -47,6 +47,8 @@ const App = () => {
   };
 
   const checkCollision = () => {
+    if (!showMessage) {
+    }
     const image1 = document.getElementById('image1').getBoundingClientRect();
     const image2 = document.getElementById('image2').getBoundingClientRect();
 
@@ -65,28 +67,36 @@ const App = () => {
 
   // handlers to move object across the screen activated on button press
   const handleMoveUp = () => {
-    // move planet up the frame by 10px
-    setObjectY((prevY) => prevY - 40);
-    setRotateAngle(0);
-    checkCollision();
+    if (!showMessage) {
+      // move planet up the frame by 10px
+      setObjectY((prevY) => prevY - 40);
+      setRotateAngle(0);
+      checkCollision();
+    }
   };
   const handleMoveLeft = () => {
-    // move planet up the frame by 10px
-    setObjectX((prevX) => prevX - 40);
-    setRotateAngle(270);
-    checkCollision();
+    if (!showMessage) {
+      // move planet up the frame by 10px
+      setObjectX((prevX) => prevX - 40);
+      setRotateAngle(270);
+      checkCollision();
+    }
   };
   const handleMoveDown = () => {
-    // move planet up the frame by 10px
-    setObjectY((prevY) => prevY + 40);
-    setRotateAngle(180);
-    checkCollision();
+    if (!showMessage) {
+      // move planet up the frame by 10px
+      setObjectY((prevY) => prevY + 40);
+      setRotateAngle(180);
+      checkCollision();
+    }
   };
   const handleMoveRight = () => {
-    // move planet up the frame by 10px
-    setObjectX((prevX) => prevX + 40);
-    setRotateAngle(90);
-    checkCollision();
+    if (!showMessage) {
+      // move planet up the frame by 10px
+      setObjectX((prevX) => prevX + 40);
+      setRotateAngle(90);
+      checkCollision();
+    }
   };
 
   return (
