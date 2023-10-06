@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Planet from './components/Planet.jsx';
 import ArrowKeys from './components/ArrowKeys.jsx';
 import ExitButton from './components/ExitButton.jsx';
@@ -43,8 +43,8 @@ const App = () => {
   }, []);
 
   const checkCollision = () => {
-    const image1 = image1Ref.current.getBoundingClientRect();
-    const image2 = image2Ref.current.getBoundingClientRect();
+    const image1 = document.getElementById('image1').getBoundingClientRect();
+    const image2 = document.getElementById('image2').getBoundingClientRect();
 
     if (
       image1.x < image2.x + image2.width &&
@@ -53,6 +53,7 @@ const App = () => {
       image1.y + image1.height > image2.y
     ) {
       console.log('Collision detected!');
+      setShowMessage(true);
     } else {
       console.log('No collision.');
     }

@@ -8,8 +8,9 @@ const Rocket = ({ x, y, imageSrc, angle }) => {
     <Wrapper style={{ top: y, left: x }}>
       <img
         src={imageSrc}
-        ref={image1Ref}
+        ref={myRef}
         style={{ transform: `rotate(${angle}deg)` }}
+        id='image1'
       />
     </Wrapper>
   );

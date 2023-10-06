@@ -4,15 +4,9 @@ import styled from 'styled-components';
 const Planet = ({ x, y, imageSrc }) => {
   const myRef = useRef();
 
-  useEffect(() => {
-    console.log(myRef.current.offsetTop);
-
-    console.log(myRef.current.offsetTop);
-  }, []);
-
   return (
     <Wrapper style={{ top: y, left: x }}>
-      <img src={imageSrc} ref={image2Ref} />
+      <img src={imageSrc} ref={myRef} id='image2' />
     </Wrapper>
   );
 };
