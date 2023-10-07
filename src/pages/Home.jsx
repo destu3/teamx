@@ -11,7 +11,9 @@ const Home = () => {
 
     const oceanIcon = <HomeIcon navigateToPath={"/ocean"} name={"OCEAN GAME"} imgSrc={oceanImg}/>
     const spaceIcon = <HomeIcon navigateToPath={"/space"} name={"SPACE GAME"} imgSrc={spaceImg}/>
+    //the empty element is a placeholder to display how multiple icons could be presented
     const empty = <HomeIcon navigateToPath={"/"} name={""} />
+    //can add
 
     return (
         <div id={"home-container"}>

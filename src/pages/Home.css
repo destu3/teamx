@@ -11,18 +11,16 @@ each row will be a flexbox to contain elements
     width: 100vw;
     height: 100vh;
 
-    background: grey;
+    background-image: url("../../src/resources/jungle.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #home-title > h1{
     margin: auto;
     text-align: center;
     font-size: 50px;
-}
 
-#home-title-2{
-    /* differentiate the font for 'explore' */
-    font-family: "Leelawadee UI";
 }
 
 [id*="icons-row"]{
