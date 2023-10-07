@@ -1,0 +1,45 @@
+#home-container{
+    display: grid;
+    grid-template-columns: auto auto;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#ocean{
+    grid-column: 1;
+
+    background-image: url("../../src/resources/ocean.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #61dafb;
+}
+
+#ocean > button{
+    width: 100%;
+    height: 100%;
+
+    background: inherit;
+
+    font-size: 50px;
+    font-weight: bold;
+    color: yellow;
+}
+
+#space{
+    grid-column: 2;
+    background-image: url("../../src/resources/sky.jpg");
+    background-color: black;
+}
+
+#space > button{
+    width: 100%;
+    height: 100%;
+
+    background: inherit;
+
+    font-size: 50px;
+    font-weight: bold;
+    color: orange;
+}
