@@ -1,7 +1,6 @@
 #home-container{
     display: grid;
     grid-template-columns: auto auto;
-
     width: 100vw;
     height: 100vh;
 }
@@ -9,8 +8,6 @@
 
 #ocean{
     grid-column: 1;
-
-    background-image: url("../../src/resources/ocean.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #61dafb;

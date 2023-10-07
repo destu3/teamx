@@ -28,6 +28,7 @@ const Wrapper = styled.div`
     justify-content: center;
     opacity: 0.75;
     margin: 1em;
+    z-index: 100;
   }
   div:hover {
     background-color: lightgrey;
