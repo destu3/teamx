@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import upButton from "../resources/upkey.png";
-import downButton from "../resources/downkey.png";
-import leftButton from "../resources/leftkey.png";
-import rightButton from "../resources/rightkey.png";
+import upButton from "../resources/upkey.jpg";
+import downButton from "../resources/downkey.jpg";
+import leftButton from "../resources/leftkey.jpg";
+import rightButton from "../resources/rightkey.jpg";
 
 const ArrowKeys = ({ moveUp, moveLeft, moveDown, moveRight }) => {
   //add key listener so that it also does the function on the arrow keys or wasd
