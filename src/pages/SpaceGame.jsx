@@ -8,7 +8,9 @@ import sky from '../resources/sky.jpg';
 import ship from '../resources/rocket.png';
 import Rocket from '../components/Rocket';
 import WellDoneMessage from '../components/WellDoneMessage.jsx';
-import {Router} from "react-router-dom";
+
+//an addition could be to add functionality to arrow key presses/wasd also
+//so the user can use either keys or the ui icons
 
 const SpaceGame = () => {
     const [objectX, setObjectX] = useState(0);

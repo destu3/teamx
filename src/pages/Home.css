@@ -1,9 +1,40 @@
+/* home container will have 4 rows
+each row will be a flexbox to contain elements
+*/
+
+
 #home-container{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
+    grid-gap: 5%;
+
     width: 100vw;
     height: 100vh;
+
+    background: grey;
 }
+
+#home-title > h1{
+    margin: auto;
+    text-align: center;
+    font-size: 50px;
+}
+
+#home-title-2{
+    /* differentiate the font for 'explore' */
+    font-family: "Leelawadee UI";
+}
+
+[id*="icons-row"]{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+    width: 80%;
+    height: 90%;
+}
+
+
 
 
 #ocean{
