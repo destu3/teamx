@@ -1,29 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
-import button1 from '../resources/block1.png';
+import upButton from "../resources/upkey.png";
+import downButton from "../resources/downkey.png";
+import leftButton from "../resources/leftkey.png";
+import rightButton from "../resources/rightkey.png";
+
 const ArrowKeys = ({ moveUp, moveLeft, moveDown, moveRight }) => {
+  //add key listener so that it also does the function on the arrow keys or wasd
+  document.onkeydown = (event) => {
+    if (event.key === "ArrowUp" || event.key === "w") moveUp();
+    else if (event.key === "ArrowDown" || event.key === "s") moveDown();
+    else if (event.key === "ArrowLeft" || event.key === "a") moveLeft();
+    else if (event.key === "ArrowRight" || event.key === "d") moveRight();
+    else console.log(event.key);
+  };
+
+
   return (
     <Wrapper>
       <div>
-        <img src={button1} alt='gamepad top' className='up' onClick={moveUp} />
         <img
-          src={button1}
+            src={upButton}
+            alt='gamepad top'
+            className='up'
+            onClick={moveUp} />
+        <img
+          src={leftButton}
           alt='gamepad left'
           className='left'
-          onClick={moveLeft}
-        />
+          onClick={moveLeft} />
         <img
-          src={button1}
+          src={downButton}
           alt='gamepad bottom'
           className='down'
-          onClick={moveDown}
-        />
+          onClick={moveDown} />
         <img
-          src={button1}
+          src={rightButton}
           alt='gamepad right'
           className='right'
-          onClick={moveRight}
-        />
+          onClick={moveRight} />
       </div>
     </Wrapper>
   );
