@@ -8,7 +8,6 @@ import sky from '../resources/sky.jpg';
 import ship from '../resources/rocket.png';
 import Rocket from '../components/Rocket';
 import WellDoneMessage from '../components/WellDoneMessage.jsx';
-import {Router} from "react-router-dom";
 
 const SpaceGame = () => {
     const [objectX, setObjectX] = useState(0);
