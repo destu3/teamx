@@ -17,6 +17,8 @@ const App = () => {
           <Route path={"/space"} element={spaceGame} />
           <Route path={"/ocean"} element={oceanGame} />
         </Routes>
+
+          {/* append virtual assistant component here and apply an absolute position to it so it appears on all pages */}
       </BrowserRouter>
   )
 }
