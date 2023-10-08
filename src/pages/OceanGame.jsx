@@ -1,22 +1,17 @@
-import ExitButton from "../components/ExitButton";
-import "./OceanGame.css";
-import React, { useEffect } from "react";
+import ExitButton from '../components/ExitButton';
+import './OceanGame.css';
+import React, { useEffect } from 'react';
 import popSound from '../resources/pop.mp3';
 
 const OceanGame = () => {
+  const popAudio = new Audio(popSound);
 
-
-    const popAudio = new Audio(popSound);
-
-    // Function to play the popping sound
-    const playPopSound = () => {
-            popAudio.play();
-       
-    };
+  // Function to play the popping sound
+  const playPopSound = () => {
+    popAudio.play();
+  };
 
   useEffect(() => {
-    
-
     const updateElementsPosition = () => {
         const sea1 = document.getElementById("sea1");
         const sea2 = document.getElementById("sea2");
@@ -36,6 +31,9 @@ const OceanGame = () => {
       };
   
       requestAnimationFrame(updateElementsPosition);
+    });
+
+    requestAnimationFrame(updateElementsPosition);
 
     // Your JavaScript code that should run after component render
     const canvasElement = document.querySelector('canvas');
@@ -50,7 +48,7 @@ const OceanGame = () => {
     let popDistance = 40;
     const mouseOffset = {
       x: 0,
-      y: 0
+      y: 0,
     };
 
     // Animation Loop
@@ -61,7 +59,9 @@ const OceanGame = () => {
       // Draw Bubbles
       ctx.beginPath();
       for (let i = 0; i < bubbles.length; i++) {
-        bubbles[i].position.x = Math.sin(bubbles[i].count / bubbles[i].distanceBetweenWaves) * 50 + bubbles[i].xOff;
+        bubbles[i].position.x =
+          Math.sin(bubbles[i].count / bubbles[i].distanceBetweenWaves) * 50 +
+          bubbles[i].xOff;
         bubbles[i].position.y = bubbles[i].count;
         bubbles[i].render();
 
@@ -83,9 +83,9 @@ const OceanGame = () => {
             mouseOffset.y < bubbles[i].position.y + bubbles[i].radius
           ) {
             for (let a = 0; a < bubbles[i].lines.length; a++) {
-                popDistance = bubbles[i].radius * 0.5;
-                bubbles[i].lines[a].popping = true;
-                bubbles[i].popping = true;     
+              popDistance = bubbles[i].radius * 0.5;
+              bubbles[i].lines[a].popping = true;
+              bubbles[i].popping = true;
             }
           }
         }
@@ -102,14 +102,14 @@ const OceanGame = () => {
       this.yOff = Math.random() * canvasElement.height;
       this.distanceBetweenWaves = 100 + Math.random() * 40;
       this.count = canvasElement.height + this.yOff;
-      this.color = "#fff";
+      this.color = '#fff';
       this.lines = [];
       this.popping = false;
       this.maxRotation = 85;
       this.rotation =
         Math.floor(Math.random() * (this.maxRotation - this.maxRotation * -1)) +
         this.maxRotation * -1;
-      this.rotationDirection = "forward";
+      this.rotationDirection = 'forward';
 
       // Populate Lines
       for (let i = 0; i < popLines; i++) {
@@ -132,17 +132,17 @@ const OceanGame = () => {
 
       // Render the circles
       this.render = function () {
-        if (this.rotationDirection === "forward") {
+        if (this.rotationDirection === 'forward') {
           if (this.rotation < this.maxRotation) {
             this.rotation++;
           } else {
-            this.rotationDirection = "backward";
+            this.rotationDirection = 'backward';
           }
         } else {
           if (this.rotation > this.maxRotation * -1) {
             this.rotation--;
           } else {
-            this.rotationDirection = "forward";
+            this.rotationDirection = 'forward';
           }
         }
 
@@ -152,7 +152,7 @@ const OceanGame = () => {
 
         if (!this.popping) {
           ctx.beginPath();
-          ctx.strokeStyle = "white";
+          ctx.strokeStyle = 'white';
           ctx.lineWidth = 1;
           ctx.arc(0, 0, this.radius - 3, 0, Math.PI * 1.5, true);
           ctx.stroke();
@@ -233,7 +233,7 @@ const OceanGame = () => {
         this.updateValues();
 
         ctx.beginPath();
-        ctx.strokeStyle = "white";
+        ctx.strokeStyle = 'white';
         ctx.lineWidth = 2;
         ctx.moveTo(this.x, this.y);
         if (this.x < this.bubble.position.x) {
@@ -253,44 +253,39 @@ const OceanGame = () => {
       };
     }
 
-    const mouseMove = (e) => {
+    const mouseMove = e => {
       mouseOffset.x = e.offsetX;
       mouseOffset.y = e.offsetY;
     };
 
-    canvasElement.addEventListener("mousemove", mouseMove);
+    canvasElement.addEventListener('mousemove', mouseMove);
 
     const handleResize = () => {
       canvasElement.width = document.body.clientWidth;
       canvasElement.height = document.body.clientHeight;
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     // Start the animation loop
     requestAnimationFrame(animate);
   }, []);
 
+  return (
+    <>
+      <ExitButton />
+      <section className="gameArea">
+        <div id="sky"></div>
+        <div id="sea1"></div>
+        <div id="sea2"></div>
+        <div id="sea3"></div>
+        <div id="ship"></div>
+        <div id="sea4"></div>
 
-      
-    return (
-        <>
-            <ExitButton />
-            <section className="gameArea">
-
-                <div id="sky"></div>
-                <div id="sea1"></div>
-                <div id="sea2"></div>
-                <div id="sea3"></div>
-                <div id="ship"></div>
-                <div id="sea4"></div>
-            
-                <canvas></canvas>
-                
-            </section>
-
-        </>
-    )
-}
+        <canvas></canvas>
+      </section>
+    </>
+  );
+};
 
 export default OceanGame;
