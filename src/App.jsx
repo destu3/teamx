@@ -14,17 +14,14 @@ const App = () => {
   const oceanGame = <OceanGame />;
 
   return (
-    <Wrapper>
-      <BrowserRouter>
-        <Routes>
-          <Route path={'/'} element={start} />
-          <Route path={'/home'} element={home} />
-          <Route path={'space'} element={spaceGame} />
-          <Route path={'ocean'} element={oceanGame} />
-        </Routes>
-      </BrowserRouter>
-      <Assistant />
-    </Wrapper>
+    <BrowserRouter>
+      <Routes>
+        <Route path={'/'} element={start} />
+        <Route path={'/home'} element={home} />
+        <Route path={'/space'} element={spaceGame} />
+        <Route path={'/ocean'} element={oceanGame} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

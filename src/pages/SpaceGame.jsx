@@ -12,6 +12,7 @@ import WellDoneMessage from '../components/WellDoneMessage.jsx';
 import planet1 from '../resources/saturn.png';
 import planet2 from '../resources/pplanet.png';
 import coinSound from '../resources/coin.mp3';
+import speakText from "../components/speakText";
 
 const SpaceGame = () => {
   const [objectX, setObjectX] = useState(0);
@@ -99,6 +100,7 @@ const SpaceGame = () => {
       console.log('Collision detected!');
       setShowMessage(true);
       playWinSound();
+      speakText("Well done.");
     } else {
       console.log('No collision.');
     }
@@ -152,7 +154,7 @@ const SpaceGame = () => {
         moveDown={handleMoveDown}
         moveRight={handleMoveRight}
       />
-      <h1 className='spaceFact'>Fun Fact: {spaceFact}</h1>
+      <h1 className='spaceFact' onClick={() => speakText(spaceFact)}>Fun Fact: {spaceFact}</h1>
     </Wrapper>
   );
 };
