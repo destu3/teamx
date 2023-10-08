@@ -26,10 +26,10 @@ const OceanGame = () => {
         if (sea1 && sea2 && sea3 && ship) {
           const offsetY = window.pageYOffset;
   
-          sea1.style.top = `${200 + (offsetY - 200) * 0.3}px`;
-          sea2.style.top = `${200 + (offsetY - 200) * 0.2}px`;
-          sea3.style.top = `${200 + (offsetY - 200) * 0.1}px`;
-          ship.style.top = `${100 + (offsetY - 100) * 0.05}px`;
+          sea1.style.top = `${400 + (offsetY - 400) * 0.3}px`;
+          sea2.style.top = `${400 + (offsetY - 400) * 0.2}px`;
+          sea3.style.top = `${400 + (offsetY - 400) * 0.1}px`;
+          ship.style.top = `${50 + (offsetY - 50) * 0.05}px`;
         }
   
         requestAnimationFrame(updateElementsPosition);
@@ -97,10 +97,10 @@ const OceanGame = () => {
     // Bubble Constructor
     function createBubble() {
       this.position = { x: 0, y: 0 };
-      this.radius = 20 + Math.random() * 6;
+      this.radius = Math.floor(Math.random() * (71 - 40 + 1)) + 40;
       this.xOff = Math.random() * canvasElement.width - this.radius;
       this.yOff = Math.random() * canvasElement.height;
-      this.distanceBetweenWaves = 50 + Math.random() * 40;
+      this.distanceBetweenWaves = 100 + Math.random() * 40;
       this.count = canvasElement.height + this.yOff;
       this.color = "#fff";
       this.lines = [];
@@ -122,7 +122,7 @@ const OceanGame = () => {
 
       this.resetPosition = function () {
         this.position = { x: 0, y: 0 };
-        this.radius = 8 + Math.random() * 6;
+        this.radius = Math.floor(Math.random() * (101 - 50 + 1)) + 50;
         this.xOff = Math.random() * canvasElement.width - this.radius;
         this.yOff = Math.random() * canvasElement.height;
         this.distanceBetweenWaves = 50 + Math.random() * 40;

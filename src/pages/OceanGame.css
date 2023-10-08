@@ -23,8 +23,8 @@ body {
 }
 
 #sky {
-  background: #00afe9;
-  height: 200px;
+  background: #BDE9F6;
+  height: 400px;
   z-index: 3;
 
 }
@@ -34,42 +34,52 @@ body {
 }
 
 #sea1 {
-  background-color: #003;
+  background-color: #373363;
   top: 200px;
-  height: 20px;
+  height: 40px;
   z-index: 3;
 }
 
+@keyframes shipAnimation {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px); /* Adjust the value for desired height */
+    }
+  }
+
 #ship {
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/BrnBld_UtoernSketch.svg/220px-BrnBld_UtoernSketch.svg.png);
+  background-image: url("../resources/boat.png");
   background-size: contain;
   background-repeat: no-repeat;
-  top: 200px;
-  width: 100px;
-  height: 100px;
+  top: 150px;
+  width: 200px;
+  height: 500px;
   margin: 0 auto;
-  background-position-y: 40px;
   z-index: 10;
+  animation: shipAnimation 2s ease-in-out infinite;
+  left: 50px;
 }
 
 #sea2 {
-  background-color: #00a;
+  background-color: #364B82;
   top: 200px;
-  height: 20px;
+  height: 40px;
   z-index: 3;
 }
 
 #sea3 {
-  background-color: #00a;
+  background-color: #3577b8;
   top: 180px;
-  height: 20px;
+  height: 40px;
   z-index: 3;
 }
 
 #sea4 {
-  background: rgb(0, 0, 170);
-  background: linear-gradient(0deg, black 0%, rgba(0, 0, 170, 1) 50%,rgba(34, 34, 255, 1) 100%);  
-  top: 200px;
+  background: #2F6AA4;
+  background: linear-gradient(0deg, black 0%, #1e4469 50%,#2F6AA4 100%);  
+  top: 400px;
   height: 800%;
   z-index: 1;
 }

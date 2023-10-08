@@ -1,6 +1,7 @@
 #home-container{
     display: grid;
     grid-template-columns: auto auto;
+
     width: 100vw;
     height: 100vh;
 }
