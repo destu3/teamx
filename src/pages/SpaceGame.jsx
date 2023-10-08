@@ -3,11 +3,15 @@ import Planet from '../components/Planet.jsx';
 import ArrowKeys from '../components/ArrowKeys.jsx';
 import ExitButton from '../components/ExitButton.jsx';
 import styled from 'styled-components';
-import planet1 from '../resources/saturn.png';
-import sky from '../resources/sky.jpg';
+import sky from '../resources/skyremoved.png';
 import ship from '../resources/rocket.png';
 import Rocket from '../components/Rocket';
 import WellDoneMessage from '../components/WellDoneMessage.jsx';
+
+// planet imports
+import planet1 from '../resources/saturn.png';
+import planet2 from '../resources/pplanet.png';
+import coinSound from '../resources/coin.mp3';
 
 const SpaceGame = () => {
   const [objectX, setObjectX] = useState(0);
@@ -17,6 +21,15 @@ const SpaceGame = () => {
   const [doingLevel, setDoingLevel] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const [rotateAngle, setRotateAngle] = useState(90);
+  const [planet, setPlanet] = useState(planet1);
+
+  const coinAudio = new Audio(coinSound);
+
+  // Function to play the popping sound
+  const playWinSound = () => {
+    coinAudio.loop = false;
+    coinAudio.play();
+  };
 
   // will close well done message to start next level
   useEffect(() => {
@@ -27,8 +40,18 @@ const SpaceGame = () => {
     }, 5000);
   }, [showMessage]);
 
+  const generatePlanet = () => {
+    let index = Math.floor(Math.random() * 2);
+    if (index == 1) {
+      setPlanet(planet2);
+    } else {
+      setPlanet(planet1);
+    }
+  };
+
   const resetGame = () => {
     generateShipStartPosition();
+    generatePlanet();
     generatePlanetStartPosition();
   };
 
@@ -42,7 +65,7 @@ const SpaceGame = () => {
   };
 
   const generatePlanetStartPosition = () => {
-    setPlanetX(Math.floor(Math.random() * (800 - 600)) + 600);
+    setPlanetX(Math.floor(Math.random() * (1400 - 800 + 1)) + 800);
     setPlanetY(Math.floor(Math.random() * (700 - 50)) + 50);
   };
 
@@ -60,6 +83,7 @@ const SpaceGame = () => {
     ) {
       console.log('Collision detected!');
       setShowMessage(true);
+      playWinSound();
     } else {
       console.log('No collision.');
     }
@@ -69,7 +93,7 @@ const SpaceGame = () => {
   const handleMoveUp = () => {
     if (!showMessage) {
       // move planet up the frame by 10px
-      setObjectY(prevY => prevY - 40);
+      setObjectY((prevY) => prevY - 40);
       setRotateAngle(0);
       checkCollision();
     }
@@ -77,7 +101,7 @@ const SpaceGame = () => {
   const handleMoveLeft = () => {
     if (!showMessage) {
       // move planet up the frame by 10px
-      setObjectX(prevX => prevX - 40);
+      setObjectX((prevX) => prevX - 40);
       setRotateAngle(270);
       checkCollision();
     }
@@ -85,7 +109,7 @@ const SpaceGame = () => {
   const handleMoveDown = () => {
     if (!showMessage) {
       // move planet up the frame by 10px
-      setObjectY(prevY => prevY + 40);
+      setObjectY((prevY) => prevY + 40);
       setRotateAngle(180);
       checkCollision();
     }
@@ -93,7 +117,7 @@ const SpaceGame = () => {
   const handleMoveRight = () => {
     if (!showMessage) {
       // move planet up the frame by 10px
-      setObjectX(prevX => prevX + 40);
+      setObjectX((prevX) => prevX + 40);
       setRotateAngle(90);
       checkCollision();
     }
@@ -104,7 +128,7 @@ const SpaceGame = () => {
       <ExitButton />
       {showMessage && <WellDoneMessage />}
       <Rocket x={objectX} y={objectY} imageSrc={ship} angle={rotateAngle} />
-      <Planet x={planetX} y={planetY} imageSrc={planet1} />
+      <Planet x={planetX} y={planetY} imageSrc={planet} />
       <ArrowKeys
         moveUp={handleMoveUp}
         moveLeft={handleMoveLeft}
