@@ -1,0 +1,35 @@
+#home-container {
+  padding: 4rem;
+  position: relative;
+  height: 100vh;
+  background: var(--bg-colour);
+}
+
+/* center component */
+
+#home-container .wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 5px solid var(--app-white);
+}
+
+.center-el {
+  height: 300px;
+  width: 300px;
+  background: url('../resources/home/mascots.png') center/contain no-repeat;
+}
+
+/* environment grid */
+.env-container {
+  overflow: hidden;
+  border-radius: 20px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
