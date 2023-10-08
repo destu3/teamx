@@ -7,13 +7,28 @@
     width: 100vw;
     height: 100vh;
 
-    background: pink;
+    background-image: url("../../src/resources/jungle2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #assistant{
     grid-row: 2 / 4;
     grid-column: 2;
+
+    animation: side-to-side;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
 }
+
+@keyframes side-to-side {
+    0%   {transform: rotate(0deg);}
+    25%  {transform: rotate(30deg);}
+    50%  {transform: rotate(0deg);}
+    75%  {transform: rotate(-30deg);}
+    100% {transform: rotate(0deg);}
+}
+
 
 #text-bubble{
     grid-row: 2;
@@ -22,6 +37,8 @@
 
     border-radius: 5%;
     text-align: center;
+
+    background: white;
 }
 
 #text-bubble > h1{
