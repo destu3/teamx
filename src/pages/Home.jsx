@@ -2,6 +2,14 @@ import { useState } from 'react';
 import EnvCard from '../components/EnvCard';
 import '../styles/Home.css';
 
+<<<<<<< HEAD
+=======
+import HomeIcon from "../components/HomeIcon";
+import oceanImg from "../resources/ocean.jpg";
+import spaceImg from "../resources/sky.jpg";
+
+//2 areas of the page, one half leads to ocean game, the other leads to the space games
+>>>>>>> a0234606f8b2179d5bb7c456732dcf89d34061ed
 const Home = () => {
   // mvp will use hard coded values
   // pni = page not implemented
