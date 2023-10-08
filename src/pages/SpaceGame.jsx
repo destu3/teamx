@@ -3,7 +3,7 @@ import Planet from '../components/Planet.jsx';
 import ArrowKeys from '../components/ArrowKeys.jsx';
 import ExitButton from '../components/ExitButton.jsx';
 import styled from 'styled-components';
-import sky from '../resources/269159.png';
+import sky from '../resources/skyremoved.png';
 import ship from '../resources/rocket.png';
 import Rocket from '../components/Rocket';
 import WellDoneMessage from '../components/WellDoneMessage.jsx';
