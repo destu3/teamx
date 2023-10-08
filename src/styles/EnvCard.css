@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Autour+One&display=swap');
+
+.env-wrapper {
+  overflow: hidden;
+}
+
+.env-wrapper:hover .env {
+  scale: 1.15;
+}
+
+.env-wrapper:hover .env.pni {
+  filter: grayscale(80%);
+}
+
+.env-wrapper:hover .sect-heading {
+  opacity: 1;
+}
+
+.env {
+  font-family: 'Autour One';
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+
+.sect-heading {
+  text-align: center;
+  transition: opacity 0.2s ease-in-out;
+  font-size: 2.8rem;
+  color: var(--app-white);
+  padding: 0 8px;
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
