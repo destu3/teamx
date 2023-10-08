@@ -2,6 +2,7 @@ import ExitButton from '../components/ExitButton';
 import './OceanGame.css';
 import React, { useEffect } from 'react';
 import popSound from '../resources/pop.mp3';
+import speakText from "../components/speakText";
 import birdsGIF from '../resources/birds.gif';
 import fish1 from '../resources/fish/1.png'; // Import fish images
 import fish2 from '../resources/fish/2.png';
@@ -333,7 +334,7 @@ const OceanGame = () => {
       <section className="gameArea">
 
         <div id="sky">
-            <h1>Pop the bubbles!</h1>
+            <h1 onClick={() => speakText("Pop the bubbles!")}>Pop the bubbles!</h1>
             <img src={birdsGIF} alt="Birds GIF"/>
         </div>
 
