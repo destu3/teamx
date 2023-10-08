@@ -1,15 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Router, useNavigate} from "react-router-dom";
+import { Router, useNavigate } from 'react-router-dom';
 
 const ExitButton = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <Wrapper>
-        <div>
-            <button onClick={() => {navigate("/home")}}>X</button>
-        </div>
+      <div>
+        <button
+          onClick={() => {
+            navigate('/');
+          }}
+        >
+          X
+        </button>
+      </div>
     </Wrapper>
   );
 };
@@ -35,7 +41,7 @@ const Wrapper = styled.div`
   }
   button {
     font-size: 40px;
-    
+
     height: inherit;
     width: inherit;
     border-radius: inherit;
