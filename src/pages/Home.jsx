@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import EnvCard from '../components/EnvCard';
 import '../styles/Home.css';
+import Assistant from '../components/Assistant';
+import styled from 'styled-components';
 
 const Home = () => {
   // mvp will use hard coded values
@@ -43,17 +45,23 @@ const Home = () => {
   const [envs] = useState(envData);
 
   return (
-    <div id={'home-container'}>
-      <div className="env-container">
-        {envs.map((env, i) => (
-          <EnvCard key={i + 1} pni={env.pni} data={env} />
-        ))}
+    <Wrapper>
+      <div id={'home-container'}>
+        <div className='env-container'>
+          {envs.map((env, i) => (
+            <EnvCard key={i + 1} pni={env.pni} data={env} />
+          ))}
+        </div>
+        <div className='wrapper'>
+          <div className='center-el branding'></div>
+        </div>
       </div>
-      <div className="wrapper">
-        <div className="center-el branding"></div>
-      </div>
-    </div>
+    </Wrapper>
   );
 };
 
 export default Home;
+
+const Wrapper = styled.div`
+  position: relative;
+`;
