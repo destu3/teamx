@@ -10,7 +10,7 @@ const ExitButton = () => {
       <div>
         <button
           onClick={() => {
-            navigate('/');
+            navigate('/home');
           }}
         >
           X
