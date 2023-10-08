@@ -39,8 +39,20 @@ const OceanGame = () => {
             
             sea4Div.appendChild(fishImage);
 
+            const randomAnimationDuration = `${Math.random() * 20 + 2}s`; 
+            fishImage.style.setProperty('--animation-duration', randomAnimationDuration);
+
             fishImage.addEventListener('animationiteration', () => {
                 fishImage.classList.toggle('flip');
+              });
+
+              fishImage.addEventListener('click', () => {
+
+                fishImage.style.animation = 'fishSwimAway 0.5s linear';
+                fishImage.addEventListener('animationend', () => {
+                fishImage.remove();
+
+                });
               });
           };
       

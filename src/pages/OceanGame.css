@@ -101,24 +101,35 @@ body {
   background: linear-gradient(0deg, black 0%, #1e4469 50%,#2F6AA4 100%);  
   top: 400px;
   height: 800%;
-  z-index: 1;
+ 
 }
 
 @keyframes fishSwimLeft {
     0% {
-      transform: translateX(0);
+      transform: translateX(0) translateY(0);
     }
     100% {
-      transform: translateX(-150%);
+      transform: translateX(-150%) translateY(5%);
     }
   }
   
   @keyframes fishSwimRight {
     0% {
-      transform: translateX(-150%) scaleX(-1); 
+      transform: translateX(-150%) scaleX(-1) translateY(0); 
     }
     100% {
-      transform: translateX(0) scaleX(-1); 
+      transform: translateX(0) scaleX(-1) translateY(5%); 
+    }
+  }
+
+  @keyframes fishSwimAway {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-400%); 
+      opacity: 0;
     }
   }
   
@@ -126,10 +137,12 @@ body {
     position: absolute;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
-    animation: fishSwimLeft 15s linear alternate infinite; /* Swim left */
+    animation: fishSwimLeft var(--animation-duration) linear alternate infinite;
+    cursor: pointer;
+    z-index: 20;
   }
   
   .fish.flip {
-    animation: fishSwimRight 15s linear alternate infinite; /* Swim right */
+    animation: fishSwimRight var(--animation-duration) linear alternate infinite; 
   }
   
