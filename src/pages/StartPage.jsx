@@ -10,8 +10,10 @@ import speakText from "../components/speakText";
 const StartPage = () => {
     const textToSpeech = function (event){
         event.stopPropagation();
-        speakText("hello, its great to meet you. Click anywhere to continue.");
+        speakText(phrase);
     }
+
+    const phrase = "hello, its great to meet you. Click anywhere to continue";
 
 
     const navigate = useNavigate();
