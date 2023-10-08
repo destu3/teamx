@@ -24,9 +24,29 @@ body {
 
 #sky {
   background: #BDE9F6;
+  background-image: url("https://img.freepik.com/free-vector/winter-landscape-with-frozen-lake-clouds_107791-1861.jpg?w=1800&t=st=1696779721~exp=1696780321~hmac=b562687a43bdef19773b39a33a39734b66ba8a9a3979bc3f0e2e453c998990e9");
+  background-position: bottom;
+  background-size: cover;
   height: 400px;
   z-index: 3;
+}
 
+#sky img {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    filter: brightness(2);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+#sky h1 {
+    font-family: 'Bubblegum Sans', cursive;
+    width: 100%;
+    text-align: center;
+    font-size: 7.5vw;
+    margin-top: 5%;
+    color: #3d3d3d;
 }
 
 .gameArea {
@@ -83,3 +103,33 @@ body {
   height: 800%;
   z-index: 1;
 }
+
+@keyframes fishSwimLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-150%);
+    }
+  }
+  
+  @keyframes fishSwimRight {
+    0% {
+      transform: translateX(-150%) scaleX(-1); 
+    }
+    100% {
+      transform: translateX(0) scaleX(-1); 
+    }
+  }
+  
+  .fish {
+    position: absolute;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    animation: fishSwimLeft 15s linear alternate infinite; /* Swim left */
+  }
+  
+  .fish.flip {
+    animation: fishSwimRight 15s linear alternate infinite; /* Swim right */
+  }
+  
