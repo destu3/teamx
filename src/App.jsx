@@ -16,8 +16,8 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={start} />
         <Route path={'/home'} element={home} />
-        <Route path={'space'} element={spaceGame} />
-        <Route path={'ocean'} element={oceanGame} />
+        <Route path={'/space'} element={spaceGame} />
+        <Route path={'/ocean'} element={oceanGame} />
       </Routes>
     </BrowserRouter>
   );
