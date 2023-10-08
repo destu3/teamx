@@ -12,7 +12,7 @@ const WellDoneMessage = () => {
 export default WellDoneMessage;
 
 const Wrapper = styled.div`
-  font-size: 3em;
+  font-size: 5em;
   position: absolute;
   color: white;
   z-index: 100;

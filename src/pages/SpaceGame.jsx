@@ -18,10 +18,12 @@ const SpaceGame = () => {
   const [objectY, setObjectY] = useState(0);
   const [planetX, setPlanetX] = useState(0);
   const [planetY, setPlanetY] = useState(0);
-  const [doingLevel, setDoingLevel] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const [rotateAngle, setRotateAngle] = useState(90);
   const [planet, setPlanet] = useState(planet1);
+  const [spaceFact, setSpaceFact] = useState(
+    'Did you know one million Earths could fit inside the Sun'
+  );
 
   const coinAudio = new Audio(coinSound);
 
@@ -49,9 +51,22 @@ const SpaceGame = () => {
     }
   };
 
+  const changeFact = () => {
+    if (
+      spaceFact === 'Did you know one million Earths could fit inside the Sun'
+    ) {
+      setSpaceFact(
+        ' If you could fly a plane to Pluto, the trip would take more than 800 years!'
+      );
+    } else {
+      setSpaceFact('Did you know one million Earths could fit inside the Sun');
+    }
+  };
+
   const resetGame = () => {
     generateShipStartPosition();
     generatePlanet();
+    changeFact();
     generatePlanetStartPosition();
   };
 
@@ -127,14 +142,17 @@ const SpaceGame = () => {
     <Wrapper style={{ backgroundImage: `url(${sky})` }}>
       <ExitButton />
       {showMessage && <WellDoneMessage />}
-      <Rocket x={objectX} y={objectY} imageSrc={ship} angle={rotateAngle} />
-      <Planet x={planetX} y={planetY} imageSrc={planet} />
+      {!showMessage && (
+        <Rocket x={objectX} y={objectY} imageSrc={ship} angle={rotateAngle} />
+      )}
+      {!showMessage && <Planet x={planetX} y={planetY} imageSrc={planet} />}
       <ArrowKeys
         moveUp={handleMoveUp}
         moveLeft={handleMoveLeft}
         moveDown={handleMoveDown}
         moveRight={handleMoveRight}
       />
+      <h1 className='spaceFact'>Fun Fact: {spaceFact}</h1>
     </Wrapper>
   );
 };
@@ -149,4 +167,14 @@ const Wrapper = styled.div`
   width: 100vw;
   z-index: 1;
   overflow: hidden;
+  .spaceFact {
+    font-size: 2.5em;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    left: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
 `;
