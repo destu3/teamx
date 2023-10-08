@@ -7,7 +7,7 @@ const EnvCard = ({ data, pni }) => {
   return (
     <section aria-label={`${env}-section`} className="env-wrapper">
       <Link
-        to={env}
+        to={"/" + env}
         style={{ backgroundImage: `url(${coverImage})` }}
         className={`env ${pni ? 'pni' : ''}`}
       >
