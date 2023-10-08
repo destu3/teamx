@@ -26,12 +26,8 @@ const OceanGame = () => {
           sea3.style.top = `${400 + (offsetY - 400) * 0.1}px`;
           ship.style.top = `${50 + (offsetY - 50) * 0.05}px`;
         }
-  
-        requestAnimationFrame(updateElementsPosition);
-      };
-  
-      requestAnimationFrame(updateElementsPosition);
-    });
+
+    };
 
     requestAnimationFrame(updateElementsPosition);
 
